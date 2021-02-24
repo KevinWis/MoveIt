@@ -1,7 +1,8 @@
-import "./style.css";
+import { Header } from "./style";
+
 const ExperienceBar = () => {
   return (
-    <header className="experience-bar">
+    <Header>
       <span>0 xp</span>
       <div>
         <div style={{ width: "50%" }} />
@@ -10,7 +11,7 @@ const ExperienceBar = () => {
         </span>
       </div>
       <span>600 xp</span>
-    </header>
+    </Header>
   );
 };
 

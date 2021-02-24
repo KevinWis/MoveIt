@@ -1,8 +1,9 @@
 import Head from "next/head";
+import ExperienceBar from "../components/experienceBar";
 
 const Home = () => {
   return (
-    <>
+    <div className="container">
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -10,7 +11,8 @@ const Home = () => {
           rel="stylesheet"
         />
       </Head>
-    </>
+      <ExperienceBar />
+    </div>
   );
 };
 
