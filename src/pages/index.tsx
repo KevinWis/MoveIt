@@ -1,7 +1,11 @@
-import Head from "next/head";
+import CompletedChallenges from "../components/completedChallenges";
 
 const Home = () => {
-  return <div className="container"></div>;
+  return (
+    <div className="container">
+      <CompletedChallenges />
+    </div>
+  );
 };
 
 export default Home;
