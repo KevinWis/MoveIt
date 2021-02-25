@@ -1,7 +1,11 @@
-import Head from "next/head";
+import Countdown from "../components/countdown";
 
 const Home = () => {
-  return <div className="container"></div>;
+  return (
+    <div className="container">
+      <Countdown />
+    </div>
+  );
 };
 
 export default Home;
