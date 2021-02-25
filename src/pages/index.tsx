@@ -1,11 +1,7 @@
 import Head from "next/head";
 
 const Home = () => {
-  return (
-    <>
-
-    </>
-  );
+  return <div className="container"></div>;
 };
 
 export default Home;
