@@ -3,7 +3,9 @@ import { ChallengesContext } from "../../contexts/challengesContext";
 import { Container, Inactive, Active } from "./style";
 
 const ChallengeBox = () => {
-  const { activeChallenge } = useContext(ChallengesContext);
+  const { activeChallenge, resetChallenge, completeChallenge } = useContext(
+    ChallengesContext
+  );
   return (
     <Container>
       {activeChallenge ? (
@@ -15,10 +17,18 @@ const ChallengeBox = () => {
             <p>{activeChallenge.description}</p>
           </main>
           <footer>
-            <button type="button" className="challenge-failed-button">
+            <button
+              type="button"
+              className="challenge-failed-button"
+              onClick={resetChallenge}
+            >
               Falhei
             </button>
-            <button type="button" className="challenge-succeeded-button">
+            <button
+              type="button"
+              className="challenge-succeeded-button"
+              onClick={completeChallenge}
+            >
               Completei
             </button>
           </footer>
