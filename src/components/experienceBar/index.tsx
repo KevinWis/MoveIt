@@ -1,14 +1,24 @@
+import { useContext } from "react";
+import { ChallengesContext } from "../../contexts/challengesContext";
 import { Header, CurrentXp, CurrentXpBar } from "./style";
 
 const ExperienceBar = () => {
+  const { currentExperience, experienceToNextLevel } = useContext(
+    ChallengesContext
+  );
+
+  const percentToNextLevel =
+    Math.round(currentExperience * 100) / experienceToNextLevel;
   return (
     <Header>
       <span>0 xp</span>
       <div>
-        <CurrentXpBar charge={50} />
-        <CurrentXp offsetX={50}>300xp</CurrentXp>
+        <CurrentXpBar charge={percentToNextLevel} />
+        <CurrentXp offsetX={percentToNextLevel}>
+          {currentExperience}xp
+        </CurrentXp>
       </div>
-      <span>600 xp</span>
+      <span>{experienceToNextLevel}</span>
     </Header>
   );
 };
