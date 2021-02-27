@@ -18,6 +18,7 @@ export const Image = styled.div`
   border-radius: 50%;
 
   background-image: url(${(props: { src: string }) => props.src});
+  background-size: contain;
 `;
 
 export const Name = styled.p`
