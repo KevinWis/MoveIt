@@ -38,6 +38,7 @@ export const CountdownProvider = ({ children }: contextCountdownProps) => {
   const endCicle = () => {
     clearTimeout(countdownTimeout);
     setTime(0.1 * 60);
+    setHasFinished(false);
   };
 
   const count = () => {
