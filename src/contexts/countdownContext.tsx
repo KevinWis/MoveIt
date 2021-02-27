@@ -8,8 +8,7 @@ import {
 import { ChallengesContext } from "./challengesContext";
 
 interface contextCountdownData {
-  minutes: number;
-  seconds: number;
+  time: number;
   isActive: boolean;
   hasFinished: boolean;
   toggleCountdown: () => void;
@@ -60,8 +59,7 @@ export const CountdownProvider = ({ children }: contextCountdownProps) => {
   return (
     <CountdownContext.Provider
       value={{
-        minutes,
-        seconds,
+        time,
         isActive,
         hasFinished,
         toggleCountdown,
