@@ -1,7 +1,14 @@
 import { create } from "domain";
 import { createContext, useState, ReactNode } from "react";
 
-export const ChallengesContext = createContext({});
+interface ChallengesContextData {
+  level: number;
+  currentExperience: number;
+  challengesCompleted: number;
+  levelUp: () => void;
+  startNewChallenge: () => void;
+}
+export const ChallengesContext = createContext({} as ChallengesContextData);
 
 interface ChallengesProviderProps {
   children: ReactNode;
