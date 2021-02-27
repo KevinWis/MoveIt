@@ -5,7 +5,9 @@ import { Container, Button } from "./style";
 let countdownTimeout: NodeJS.Timeout;
 
 const Countdown = () => {
-  const { startNewChallenge } = useContext(countdownContext);
+  const { hasFinished, isActive, time, toggleCountdown } = useContext(
+    CountdownContext
+  );
 
   const minutes = Math.floor(time / 60)
     .toString()

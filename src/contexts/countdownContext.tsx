@@ -18,7 +18,7 @@ interface contextCountdownProps {
   children: ReactNode;
 }
 
-const CountdownContext = createContext({} as contextCountdownData);
+export const CountdownContext = createContext({} as contextCountdownData);
 
 let countdownTimeout: NodeJS.Timeout;
 
