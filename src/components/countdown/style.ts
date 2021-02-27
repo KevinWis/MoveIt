@@ -58,7 +58,20 @@ export const Button = styled.button`
   transition: 0.35s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
   outline: none;
-  &:hover {
+  &:disabled {
+    cursor: default;
+  }
+  &:not(:disabled):hover {
     background-color: var(--blue-dark);
+  }
+
+  &.red {
+    background-color: var(--white);
+    color: var(--title);
+
+    &:hover {
+      background-color: var(--red);
+      color: var(--white);
+    }
   }
 `;
