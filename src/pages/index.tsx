@@ -3,6 +3,7 @@ import ExperienceBar from "../components/experienceBar";
 import Profile from "../components/profile";
 import CompletedChallenges from "../components/completedChallenges";
 import Countdown from "../components/countdown";
+import ChallengeBox from "../components/challengeBox";
 const Home = () => {
   return (
     <Container>
@@ -13,7 +14,9 @@ const Home = () => {
           <CompletedChallenges />
           <Countdown />
         </div>
-        <div></div>
+        <div>
+          <ChallengeBox />
+        </div>
       </InnerContainer>
     </Container>
   );
