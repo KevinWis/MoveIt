@@ -19,14 +19,13 @@ interface ChallengesContextData {
   resetChallenge: () => void;
   completeChallenge: () => void;
 }
-
 export const ChallengesContext = createContext({} as ChallengesContextData);
 
 interface ChallengesProviderProps {
   children: ReactNode;
   level: number;
-  currentExperience: Number;
-  challengesCompleted: Number;
+  currentExperience: number;
+  challengesCompleted: number;
 }
 
 export const ChallengesProvider = ({
@@ -51,16 +50,6 @@ export const ChallengesProvider = ({
     Cookies.set("challengesCompleted", String(challengesCompleted));
   }, [level, currentExperience, challengesCompleted]);
 
-  useEffect(() => {
-    Notification.requestPermission();
-  }, []);
-
-  useEffect(() => {
-    setLevel(Number(Cookies.get("level")));
-    setCurrentExperience(Number(Cookies.get("currentExperience")));
-    setChallengesCompleted(Number(Cookies.get("challengesCompleted")));
-  }, []);
-
   const levelUp = () => {
     setLevel(level + 1);
   };
@@ -79,7 +68,9 @@ export const ChallengesProvider = ({
       levelUp();
     } else {
       setCurrentExperience(currentExperience + activeChallenge.amount);
+      console.log(currentExperience + activeChallenge.amount);
     }
+
     resetChallenge();
   };
 
