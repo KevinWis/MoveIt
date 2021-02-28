@@ -1,3 +1,4 @@
+import { browser } from "process";
 import {
   createContext,
   ReactNode,
@@ -57,6 +58,9 @@ export const CountdownProvider = ({ children }: contextCountdownProps) => {
     count();
   }, [time, isActive]);
 
+  useEffect(() => {
+    Notification.requestPermission();
+  }, []);
   return (
     <CountdownContext.Provider
       value={{
