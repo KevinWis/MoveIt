@@ -1,7 +1,6 @@
-import { create } from "domain";
-import { createContext, useState, ReactNode, useContext } from "react";
+import Cookies from "js-cookie";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import challenges from "../../challenges.json";
-import CompletedChallenges from "../components/completedChallenges";
 
 interface Challenge {
   type: "body" | "eye";
@@ -25,16 +24,42 @@ export const ChallengesContext = createContext({} as ChallengesContextData);
 
 interface ChallengesProviderProps {
   children: ReactNode;
+  level: number;
+  currentExperience: Number;
+  challengesCompleted: Number;
 }
 
-export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
-  const [level, setLevel] = useState(1);
-  const [currentExperience, setCurrentExperience] = useState(0);
-  const [challengesCompleted, setChallengesCompleted] = useState(0);
+export const ChallengesProvider = ({
+  children,
+  ...rest
+}: ChallengesProviderProps) => {
+  const [level, setLevel] = useState(rest.level ?? 1);
+  const [currentExperience, setCurrentExperience] = useState(
+    rest.currentExperience ?? 0
+  );
+  const [challengesCompleted, setChallengesCompleted] = useState(
+    rest.challengesCompleted ?? 0
+  );
 
   const [activeChallenge, setActiveChallenge] = useState(null);
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2);
+
+  useEffect(() => {
+    Cookies.set("level", String(level));
+    Cookies.set("currentExperience", String(currentExperience));
+    Cookies.set("challengesCompleted", String(challengesCompleted));
+  }, [level, currentExperience, challengesCompleted]);
+
+  useEffect(() => {
+    Notification.requestPermission();
+  }, []);
+
+  useEffect(() => {
+    setLevel(Number(Cookies.get("level")));
+    setCurrentExperience(Number(Cookies.get("currentExperience")));
+    setChallengesCompleted(Number(Cookies.get("challengesCompleted")));
+  }, []);
 
   const levelUp = () => {
     setLevel(level + 1);
@@ -43,6 +68,7 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
   const resetChallenge = () => {
     setActiveChallenge(null);
   };
+
   const completeChallenge = () => {
     setChallengesCompleted(challengesCompleted + 1);
 
