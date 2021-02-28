@@ -76,7 +76,6 @@ export const ChallengesProvider = ({
       levelUp();
     } else {
       setCurrentExperience(currentExperience + activeChallenge.amount);
-      console.log(currentExperience + activeChallenge.amount);
     }
 
     resetChallenge();
